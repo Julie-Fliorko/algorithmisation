@@ -39,7 +39,7 @@ if __name__ == '__main__':
     print("Number of comparisons: " + str(Film.bubble_sort_comparison_counter))
     print("Number of swaps: " + str(Film.bubble_sort_swap_counter))
     print('------------------------')
-    [print(object_to_show) for object_to_show in objects]
+    [print(an_object) for an_object in objects]
 
     print('======================')
     print('Heap sort (ascending)')
@@ -48,8 +48,8 @@ if __name__ == '__main__':
     objects = Film.heap_sort_runtime_in_min_acs(objects)
     end = time.time() - start
     print("Time spent: " + str(end))
-    print("Number of comparisons: " + str(Film.merge_sort_comparison_counter))
-    print("Number of swaps: " + str(Film.merge_sort_swap_counter))
+    print("Number of comparisons: " + str(Film.heap_sort_comparison_counter))
+    print("Number of swaps: " + str(Film.heap_sort_swap_counter))
     print('======================')
 
     [print(object) for object in objects]

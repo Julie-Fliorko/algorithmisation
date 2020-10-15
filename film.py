@@ -27,33 +27,29 @@ class Film:
 
     @staticmethod
     def heap_sort_runtime_in_min_acs(objects):
-
         n = len(objects)
 
         def compare_element_from_heapsort(first_element, second_element):
-            objects.heap_sort_comparison_counter += 1
+            Film.heap_sort_comparison_counter += 1
             if first_element < second_element:
-
                 return True
             else:
-
                 return False
-
 
         def heapify(objects, n, i):
             largest = i
             l = 2 * i
             r = 2 * i + 1
 
-            if l < n and compare_element_from_heapsort(objects[i].visitors, objects[l].visitors):
+            if l < n and compare_element_from_heapsort(objects[i].num_of_responses, objects[l].num_of_responses):
                 largest = l
 
-            if r < n and compare_element_from_heapsort(objects[largest].visitors, objects[r].visitors):
+            if r < n and compare_element_from_heapsort(objects[largest].num_of_responses, objects[r].num_of_responses):
                 largest = r
 
             if largest != i:
                 objects[i], objects[largest] = objects[largest], objects[i]  # swap
-                objects.heap_sort_swap_counter += 1
+                Film.heap_sort_swap_counter += 1
                 heapify(objects, n, largest)
 
         for i in range(n, -1, -1):
@@ -61,65 +57,8 @@ class Film:
 
         for i in range(n - 1, 0, -1):
             objects[i], objects[0] = objects[0], objects[i]  # swap
-            objects.heap_sort_swap_counter += 1
-            heapify(objects, i, 0)
-        """
-        n = len(objects)
-
-        def compare_element_from_heapsort(first_element, second_element):
-            Film.heap_sort_comparison_counter += 1
-            if first_element > second_element:
-
-                return True
-            else:
-
-                return False
-
-        for i in range(n, -1, -1):
-
-
-            # heapify
-            largest = i
-            l = 2 * i
-            r = 2 * i + 1
-
-            if l < n and compare_element_from_heapsort(objects[i].visitors, objects[l].visitors):
-                largest = l
-
-            if r < n and compare_element_from_heapsort(objects[largest].visitors, objects[r].visitors):
-                largest = r
-
-            if largest != i:
-                objects[i], objects[largest] = objects[largest], objects[i]  # swap
-                Film.heap_sort_swap_counter += 1
-
-                # heapify i=largest
-                l = 2 * largest
-                r = 2 * largest + 1
-
-                if l < n and compare_element_from_heapsort(objects[i].visitors, objects[l].visitors):
-                    largest = l
-
-                if r < n and compare_element_from_heapsort(objects[largest].visitors, objects[r].visitors):
-                    largest = r
-
-
-        for i in range(n - 1, 0, -1):
-            objects[i], objects[0] = objects[0], objects[i]  # swap
             Film.heap_sort_swap_counter += 1
+            heapify(objects, i, 0)
 
-            # heapify n=i i=0
-            largest = 0
-            l = 2 * 0
-            r = 2 * 0 + 1
+        return objects
 
-            if l < n and compare_element_from_heapsort(objects[n].visitors, objects[l].visitors):
-                largest = l
-
-            if r < n and compare_element_from_heapsort(objects[largest].visitors, objects[r].visitors):
-                largest = r
-
-            if largest != n:
-                objects[n], objects[largest] = objects[largest], objects[n]  # swap
-                Film.heap_sort_swap_counter += 1
-        return objects"""
